@@ -244,7 +244,7 @@
             right: 15px;
             width: 18px;
             height: 18px;
-            background-image: url('/images/vector.png');
+            background-image: url('/images/Vector.png');
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
@@ -602,4 +602,3 @@
     </script>
 </body>
 </html>
-

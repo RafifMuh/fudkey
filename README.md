@@ -1,3 +1,15 @@
+# Fudkey
+
+The project contains the original Laravel application and a Netlify-compatible static export of its public pages.
+
+## Netlify deployment
+
+Netlify uses `netlify.toml` to run `netlify/export-static.mjs` from an isolated base directory. This prevents Composer dependency installation and exports the active Blade routes as static HTML while copying the assets from `public`.
+
+The exported routes are `/`, `/bumper`, `/home`, `/about`, `/contact`, `/menu`, `/csr`, and `/rsvp`. The export supports the site's current static pages and browser-side interactions only; Laravel runtime features such as dynamic routes, authentication, database queries, and server-side form handling require a PHP-compatible host.
+
+## Laravel application
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

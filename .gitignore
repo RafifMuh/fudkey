@@ -1,5 +1,6 @@
 /.phpunit.cache
 /node_modules
+/netlify/dist
 /public/build
 /public/hot
 /public/storage
