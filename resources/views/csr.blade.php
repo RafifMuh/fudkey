@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fudkey CSR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        @font-face {
+            font-family: 'Gantari';
+            src: url('/Gantari/Gantari-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Gantari';
+            src: url('/Gantari/Gantari-Italic-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #F5EEDC;
+            --cream-soft: #F0E2CE;
+            --orange: #FF3700;
+            --blue: #1D6ADE;
+            --dark: #151515;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            background-color: #2c2c2c;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: 'Gantari', sans-serif;
+            letter-spacing: -0.03em;
+            padding: 10px;
+        }
+
+        .csr-page {
+            width: 100%;
+            max-width: 390px;
+            min-height: 100vh;
+            min-height: 100dvh;
+            background-color: var(--cream);
+            background-image:
+                radial-gradient(circle at 20% 10%, rgba(255, 55, 0, 0.08), transparent 45%),
+                radial-gradient(circle at 85% 0%, rgba(29, 106, 222, 0.08), transparent 40%),
+                linear-gradient(180deg, #FAF1E0 0%, #F2E5D1 100%);
+            padding: 24px 18px 28px;
+            position: relative;
+        }
+
+        @media (max-width: 430px) {
+            body {
+                padding: 0;
+                background-color: var(--cream);
+            }
+
+            .csr-page {
+                max-width: 100%;
+                width: 100%;
+                min-height: 100vh;
+                min-height: 100dvh;
+            }
+        }
+
+        .csr-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 18px;
+        }
+
+        .csr-flag {
+            width: 78px;
+            height: auto;
+        }
+
+        .csr-title {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .csr-title h1 {
+            color: var(--orange);
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.05;
+            animation: float-in 0.6s ease-out both;
+        }
+
+        .csr-chip {
+            color: var(--blue);
+            font-weight: 700;
+            font-size: 12px;
+            align-self: flex-end;
+            padding-bottom: 6px;
+            animation: float-in 0.6s ease-out both;
+            animation-delay: 0.05s;
+        }
+
+        .csr-divider {
+            margin-top: 12px;
+        }
+
+        .csr-divider .bar {
+            height: 5px;
+            background-color: var(--orange);
+            animation: grow-in 0.7s ease-out both;
+        }
+
+        .csr-divider .bar.blue {
+            background-color: var(--blue);
+            height: 4px;
+            animation-delay: 0.08s;
+        }
+
+        .csr-subtitle {
+            margin-top: 16px;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark);
+            line-height: 1.2;
+            animation: float-in 0.7s ease-out both;
+            animation-delay: 0.1s;
+        }
+
+        .csr-gallery {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 12px;
+            margin: 16px 0 10px;
+            animation: float-in 0.7s ease-out both;
+            animation-delay: 0.18s;
+        }
+
+        .csr-card {
+            background-color: var(--cream-soft);
+            border-radius: 18px;
+            min-height: 160px;
+        }
+
+        .csr-card.tall {
+            min-height: 250px;
+        }
+
+        .csr-card.stack {
+            min-height: 118px;
+        }
+
+        .csr-stack {
+            display: grid;
+            gap: 12px;
+        }
+
+        .csr-copy {
+            color: #1b1b1b;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-top: 8px;
+            animation: float-in 0.7s ease-out both;
+            animation-delay: 0.24s;
+        }
+
+        .csr-copy p + p {
+            margin-top: 12px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin: 20px 0 16px;
+        }
+
+        .social-icons a {
+            color: var(--blue);
+            font-size: 18px;
+            text-decoration: none;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.15);
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            margin: 0 6px 16px;
+        }
+
+        .footer-link {
+            display: block;
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 0;
+            border-bottom: 2px solid var(--blue);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--blue);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.02em;
+            margin-top: 24px;
+        }
+
+        @keyframes float-in {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes grow-in {
+            from {
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+            to {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="csr-page">
+        <header class="csr-header">
+            <a href="/home" aria-label="Ke Home">
+                <img class="csr-flag" src="/images/sticker-flag.png" alt="Fudkey Club">
+            </a>
+        </header>
+
+        <div class="csr-title">
+            <h1>Berbagi Rasa,<br>Menebar Cerita</h1>
+            <span class="csr-chip">CSR</span>
+        </div>
+
+        <div class="csr-divider">
+            <div class="bar"></div>
+            <div class="bar blue"></div>
+        </div>
+
+        <h2 class="csr-subtitle">Jumat Berkah, Menyebar<br>Senyum Lewat Rasa</h2>
+
+        <section class="csr-gallery" aria-label="Galeri CSR">
+            <div class="csr-card tall"></div>
+            <div class="csr-stack">
+                <div class="csr-card stack"></div>
+                <div class="csr-card stack"></div>
+            </div>
+        </section>
+
+        <div class="csr-copy">
+            <p>Di Fudkey, kami percaya setiap hidangan punya cerita. Berbagi adalah bagian dari cerita itu. Setiap Jumat Berkah, kami menyiapkan nasi uduk pilihan untuk komunitas yang membutuhkan. Tujuannya sederhana: menghadirkan kebahagiaan lewat makanan hangat.</p>
+            <p>Hidangan yang dibagikan bukan sekadar makanan, tapi simbol perhatian dan kepedulian. Kami memastikan kualitas rasa tetap terjaga, karena setiap suapan layak untuk dinikmati. Setiap orang yang tersenyum adalah cerita baru yang kami rayakan.</p>
+            <p>Kegiatan ini adalah wujud nyata dari tagline kami, "Setiap rasa ada cerita." Kami ingin menebar kebaikan yang terasa, bukan hanya di lidah tapi juga di hati. Dengan setiap Jumat Berkah, Fudkey terus berkomitmen memberi dampak positif bagi lingkungan sekitar.</p>
+        </div>
+
+        <div class="social-icons">
+            <a href="#" aria-label="Email"><i class="far fa-envelope"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.tiktok.com/@sarapan.fudkey?_r=1&_t=ZS-9344jpHnFEC" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/fudkey_?igsh=MTRybm15eXE3NWxlNQ%3D%3D&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <div class="footer-links">
+            <a href="/about" class="footer-link">About us</a>
+            <a href="/contact" class="footer-link">Contact</a>
+        </div>
+
+        <p class="copyright">FUDKEY&copy;2026</p>
+    </div>
+</body>
+</html>

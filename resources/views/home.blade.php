@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fudkey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        @font-face {
+            font-family: 'Gantari';
+            src: url('/Gantari/Gantari-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Gantari';
+            src: url('/Gantari/Gantari-Italic-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --cream: #F5EEDC;
+            --card: #F0E2CE;
+            --orange: #FF3700;
+            --blue: #1D6ADE;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            background-color: #2c2c2c;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 10px;
+            font-family: 'Gantari', sans-serif;
+            letter-spacing: -0.04em;
+        }
+
+        /* Container mobile view */
+        .container {
+            width: 100%;
+            max-width: 390px;
+            min-height: 100%;
+            background-color: var(--cream);
+            background-image: url('/images/bg-fudkey.png');
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow-y: auto;
+            overflow-x: hidden;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            padding: 28px 18px 24px;
+        }
+
+        /* Mobile: full screen */
+        @media (max-width: 430px) {
+            body {
+                padding: 0;
+                background-color: var(--cream);
+            }
+
+            .container {
+                max-width: 100%;
+                width: 100%;
+                min-height: 100vh;
+                min-height: 100dvh;
+                border-radius: 0;
+                box-shadow: none;
+            }
+        }
+
+        /* Logo */
+        .logo {
+            text-align: center;
+            margin-bottom: 14px;
+            margin-top: 6px;
+        }
+
+        .logo img {
+            width: 80px;
+            height: auto;
+        }
+
+        /* Hero Title */
+        .hero-title {
+            font-family: 'Gantari', sans-serif;
+            font-size: 44px;
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--blue);
+        }
+
+        .hero-title .bold {
+            font-weight: 1000;
+        }
+
+        .hero-title .thin {
+            font-weight: 400;
+        }
+
+        /* Slider Card */
+        .slider-card {
+            background-color: var(--card);
+            border-radius: 22px;
+            margin-bottom: 14px;
+            min-height: 140px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.3s ease-out;
+            cursor: grab;
+            height: 100%;
+        }
+
+        .slider-wrapper:active {
+            cursor: grabbing;
+        }
+
+        .slider-wrapper.dragging {
+            transition: none;
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide-content {
+            color: var(--orange);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .slide-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 5px;
+        }
+
+        .slide-desc {
+            font-size: 12px;
+            color: var(--blue);
+            opacity: 0.8;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            padding-bottom: 15px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--orange);
+            opacity: 0.3;
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            border: none;
+        }
+
+        .dot:hover {
+            opacity: 0.6;
+        }
+
+        .dot.active {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        /* Big Card */
+        .big-card {
+            background-color: var(--card);
+            border-radius: 18px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 170px;
+            width: 177px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+        }
+
+        .big-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .big-card:active {
+            transform: translateY(-1px);
+        }
+
+        .big-card.full {
+            width: 100%;
+            min-height: 140px;
+        }
+
+        .big-card::after {
+            content: "";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 18px;
+            height: 18px;
+            background-image: url('/images/vector.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .big-card.kritik {
+            height: 224px;
+        }
+
+        .big-card.menu {
+            height: 343px;
+        }
+
+        .big-card.rsvp {
+            height: 289px;
+        }
+
+        .big-card.lokasi {
+            height: 171px;
+        }
+
+        .big-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .big-card-text {
+            font-size: 11px;
+            color: var(--blue);
+            line-height: 1.3;
+            font-weight: 600;
+        }
+
+        .arrow-icon {
+            color: var(--orange);
+            font-size: 18px;
+        }
+
+        .text-kritik {
+            font-family: 'Gantari', sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 0.95;
+            color: var(--orange);
+        }
+
+        .text-playlist {
+            font-family: 'Gantari', sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 0.95;
+            color: var(--orange);
+        }
+
+        .text-rsvp {
+            font-family: 'Gantari', sans-serif;
+            font-size: 50px;
+            font-weight: 600;
+            line-height: 0.95;
+            color: var(--orange);
+        }
+        .text-lokasi {
+            font-family: 'Gantari', sans-serif;
+            font-size: 45px;
+            font-weight: 600;
+            line-height: 0.95;
+            color: var(--orange);
+        }
+
+        .text-menu {
+            font-family: 'Gantari', sans-serif;
+            font-size: 50px;
+            font-weight: 600;
+            line-height: 0.95;
+            color: var(--orange);
+        }
+
+        .menu-columns {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: flex-start;
+        }
+
+        .menu-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin: 22px 0 18px;
+        }
+
+        .social-icons a {
+            color: var(--orange);
+            font-size: 20px;
+            text-decoration: none;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            margin-top: 6px;
+        }
+
+        .footer-link {
+            display: block;
+            color: var(--orange);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 0;
+            border-bottom: 2px solid var(--orange);
+            transition: padding-left 0.2s ease, opacity 0.2s ease;
+        }
+
+        .footer-link:hover {
+            padding-left: 10px;
+            opacity: 0.8;
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--orange);
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="/bumper" aria-label="Ke Bumper">
+                <img src="/images/sticker-fudkey.png" alt="Fudkey Logo">
+            </a>
+        </div>
+
+        <!-- Hero Title -->
+        <h1 class="hero-title">
+            <span class="bold">CERITA</span><span class="thin">KAN</span> <span class="bold">Y</span><span class="thin">U</span><span class="bold">K</span><br>
+            <span class="bold">BAR</span><span class="thin">ENG</span> <span class="bold">KA</span><span class="thin">MI</span>
+        </h1>
+
+        <!-- Slider Card -->
+        <div class="slider-card" id="promo-slider">
+            <div class="slider-wrapper">
+                <div class="slide">
+                    <h3 class="slide-title">Promo Spesial!</h3>
+                    <p class="slide-desc">Diskon 20% untuk pembelian pertama</p>
+                </div>
+                <div class="slide">
+                    <h3 class="slide-title">Buy 2 Get 1</h3>
+                    <p class="slide-desc">Setiap hari Jumat</p>
+                </div>
+                <div class="slide">
+                    <h3 class="slide-title">Cashback 15%</h3>
+                    <p class="slide-desc">Pakai QRIS dapat cashback!</p>
+                </div>
+            </div>
+            <div class="slider-dots">
+                <button class="dot active" data-index="0"></button>
+                <button class="dot" data-index="1"></button>
+                <button class="dot" data-index="2"></button>
+            </div>
+        </div>
+
+        <!-- Menu Columns -->
+        <div class="menu-columns">
+            <div class="menu-column">
+                <a href="https://form.typeform.com/to/QiDbnHgh" class="big-card kritik">
+                    <div class="big-card-header">
+                        <span class="big-card-text">Kami Mendengar<br>Teman Fudkey</span>
+                    </div>
+                    <h2 class="text-kritik">KRITIK &<br>SARAN</h2>
+                </a>
+                <a href="/rsvp" class="big-card rsvp">
+                    <div class="big-card-header">
+                        <span class="big-card-text">Memesan Lebih<br>Awal jika Kalian Mau</span>
+                    </div>
+                    <h2 class="text-rsvp">RSVP</h2>
+                </a>
+            </div>
+            <div class="menu-column">
+                <a href="/menu" class="big-card menu">
+                    <div class="big-card-header">
+                        <span class="big-card-text">Sajian Terbaik<br>untuk Teman Fudkey</span>
+                    </div>
+                    <h2 class="text-menu">MENU</h2>
+                </a>
+                <a href="https://maps.app.goo.gl/CwRibxeYZvddCDkv8" class="big-card lokasi" target="_blank" rel="noopener">
+                    <div class="big-card-header">
+                        <span class="big-card-text">Bertamulah Kapan Saja<br>ke Tempat Kami</span>
+                    </div>
+                    <h2 class="text-lokasi">LOKASI</h2>
+                </a>
+            </div>
+        </div>
+
+        <!-- Playlist -->
+        <a href="https://open.spotify.com/playlist/1tvPNjL0ak0mjPxI6OQAf8?si=fa12b4c7fd474abc" class="big-card full">
+            <div class="big-card-header">
+                <span class="big-card-text">Bergabung dengan Kami jika<br>Selera Musik Kita Sama</span>
+            </div>
+            <h2 class="text-playlist">PLAYLIST FDKY</h2>
+        </a>
+
+        <div class="social-icons">
+            <a href="#"><i class="far fa-envelope"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.tiktok.com/@sarapan.fudkey?_r=1&_t=ZS-9344jpHnFEC"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/fudkey_?igsh=MTRybm15eXE3NWxlNQ%3D%3D&utm_source=qr"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-links">
+            <a href="/about" class="footer-link">About us</a>
+            <a href="/contact" class="footer-link">Contact</a>
+            <a href="/csr" class="footer-link">CSR</a>
+        </div>
+        <p class="copyright">FUDKEY&copy;2026</p>
+    </div>
+
+    <script>
+        // Slider Class with Touch/Mouse Swipe
+        class Slider {
+            constructor(container) {
+                this.container = container;
+                this.wrapper = container.querySelector('.slider-wrapper');
+                this.slides = container.querySelectorAll('.slide');
+                this.dots = container.querySelectorAll('.dot');
+                this.currentIndex = 0;
+                this.startX = 0;
+                this.currentX = 0;
+                this.isDragging = false;
+                this.slideWidth = 0;
+                
+                this.init();
+            }
+
+            init() {
+                this.updateSlideWidth();
+                window.addEventListener('resize', () => this.updateSlideWidth());
+
+                // Touch events
+                this.wrapper.addEventListener('touchstart', (e) => this.handleDragStart(e), { passive: true });
+                this.wrapper.addEventListener('touchmove', (e) => this.handleDragMove(e), { passive: false });
+                this.wrapper.addEventListener('touchend', () => this.handleDragEnd());
+
+                // Mouse events
+                this.wrapper.addEventListener('mousedown', (e) => this.handleDragStart(e));
+                this.wrapper.addEventListener('mousemove', (e) => this.handleDragMove(e));
+                this.wrapper.addEventListener('mouseup', () => this.handleDragEnd());
+                this.wrapper.addEventListener('mouseleave', () => this.handleDragEnd());
+
+                // Dot click events
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                });
+
+                // Auto slide
+                this.startAutoSlide();
+            }
+
+            updateSlideWidth() {
+                this.slideWidth = this.container.offsetWidth;
+            }
+
+            handleDragStart(e) {
+                this.isDragging = true;
+                this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                this.wrapper.classList.add('dragging');
+                this.stopAutoSlide();
+            }
+
+            handleDragMove(e) {
+                if (!this.isDragging) return;
+                
+                const currentPosition = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                this.currentX = currentPosition - this.startX;
+                
+                const offset = -this.currentIndex * this.slideWidth + this.currentX;
+                this.wrapper.style.transform = `translateX(${offset}px)`;
+
+                if (e.type === 'touchmove' && Math.abs(this.currentX) > 10) {
+                    e.preventDefault();
+                }
+            }
+
+            handleDragEnd() {
+                if (!this.isDragging) return;
+                this.isDragging = false;
+                this.wrapper.classList.remove('dragging');
+
+                const threshold = this.slideWidth * 0.2;
+                
+                if (this.currentX > threshold && this.currentIndex > 0) {
+                    this.currentIndex--;
+                } else if (this.currentX < -threshold && this.currentIndex < this.slides.length - 1) {
+                    this.currentIndex++;
+                }
+
+                this.currentX = 0;
+                this.updateSliderPosition();
+                this.startAutoSlide();
+            }
+
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.updateSliderPosition();
+                this.stopAutoSlide();
+                this.startAutoSlide();
+            }
+
+            updateSliderPosition() {
+                const offset = -this.currentIndex * this.slideWidth;
+                this.wrapper.style.transform = `translateX(${offset}px)`;
+                
+                this.dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            startAutoSlide() {
+                this.autoSlideInterval = setInterval(() => {
+                    this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+                    this.updateSliderPosition();
+                }, 4000);
+            }
+
+            stopAutoSlide() {
+                clearInterval(this.autoSlideInterval);
+            }
+        }
+
+        // Initialize slider
+        document.addEventListener('DOMContentLoaded', () => {
+            const sliderContainer = document.getElementById('promo-slider');
+            if (sliderContainer) {
+                new Slider(sliderContainer);
+            }
+        });
+    </script>
+</body>
+</html>
+

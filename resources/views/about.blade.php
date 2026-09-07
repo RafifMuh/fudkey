@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>About Fudkey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        @font-face {
+            font-family: 'Gantari';
+            src: url('/Gantari/Gantari-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Gantari';
+            src: url('/Gantari/Gantari-Italic-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue: #1D6ADE;
+            --orange: #FF3700;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            background-color: #2c2c2c;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: 'Gantari', sans-serif;
+            letter-spacing: -0.04em;
+            padding: 10px;
+        }
+
+        .about-page {
+            width: 390px;
+            max-width: 390px;
+            height: 843px;
+            min-height: 843px;
+            padding: 24px 18px 30px;
+            background-color: var(--blue);
+            color: #fff;
+            position: relative;
+        }
+
+        @media (max-width: 430px) {
+            body {
+                padding: 0;
+            }
+
+            .about-page {
+                max-width: 100%;
+                width: 100%;
+                min-height: 100vh;
+                min-height: 100dvh;
+            }
+        }
+
+        .about-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .about-flag {
+            width: 78px;
+            height: auto;
+        }
+
+        .about-title {
+            font-size: 15px;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 6px;
+        }
+
+        .about-heading {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 12px;
+        }
+
+        .about-divider {
+            height: 6px;
+            background-color: var(--orange);
+            margin: 6px -18px 2px;
+        }
+
+        .about-divider.thin {
+            height: 3px;
+            background-color: #fff;
+            margin: 0 -18px 14px;
+        }
+
+        .about-body {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 6px;
+        }
+
+        .about-body p + p {
+            margin-top: 12px;
+        }
+
+        .about-footer {
+            margin-top: 22px;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin: 18px 0 18px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.15);
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            margin: 0 6px 16px;
+            text-align: left;
+        }
+
+        .footer-link {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 7px 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+        }
+
+        .copyright {
+            color: #fff;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.02em;
+            margin-top: 24px;
+        }
+
+        @keyframes float-in {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes grow-in {
+            from {
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+            to {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+        }
+
+        .about-header {
+            animation: float-in 0.6s ease-out both;
+        }
+
+        .about-title {
+            animation: float-in 0.6s ease-out both;
+            animation-delay: 0.05s;
+        }
+
+        .about-heading {
+            animation: float-in 0.6s ease-out both;
+            animation-delay: 0.08s;
+        }
+
+        .about-divider {
+            animation: grow-in 0.7s ease-out both;
+            animation-delay: 0.1s;
+        }
+
+        .about-divider.thin {
+            animation-delay: 0.15s;
+        }
+
+        .about-body {
+            animation: float-in 0.7s ease-out both;
+            animation-delay: 0.2s;
+        }
+
+        .about-footer {
+            animation: float-in 0.7s ease-out both;
+            animation-delay: 0.28s;
+        }
+    </style>
+</head>
+<body>
+    <div class="about-page">
+        <header class="about-header">
+            <a href="/home" aria-label="Ke Home">
+                <img class="about-flag" src="/images/sticker-flag.png" alt="Fudkey Club">
+            </a>
+        </header>
+
+        <div class="about-title">About us</div>
+        <div class="about-heading">Tentang Fudkey</div>
+        <div class="about-divider"></div>
+        <div class="about-divider thin"></div>
+
+        <div class="about-body">
+            <p>
+                Fudkey adalah tempat di mana nasi uduk disajikan dengan rasa yang konsisten
+                dan pengalaman yang diperhatikan secara menyeluruh. Kami percaya makanan
+                yang baik selalu punya cerita, dari aroma pertama hingga suapan terakhir.
+            </p>
+            <p>
+                Dengan tagline "Setiap rasa ada cerita", Fudkey menghadirkan nasi uduk dari
+                bahan pilihan, racikan bumbu yang seimbang, dan proses yang terjaga kualitasnya.
+                Setiap menu dirancang agar sederhana, nikmat, dan memuaskan.
+            </p>
+            <p>
+                Bagi kami, kepuasan pelanggan tidak berhenti di rasa. Penyajian, pelayanan,
+                dan kenyamanan adalah bagian dari pengalaman yang sama pentingnya.
+            </p>
+            <p>
+                Karena ketika pengalaman makan terasa baik, pelanggan tidak hanya datang
+                untuk makan, tapi untuk kembali.
+            </p>
+        </div>
+
+        <div class="about-footer">
+            <div class="social-icons">
+                <a href="#" aria-label="Email"><i class="far fa-envelope"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@sarapan.fudkey?_r=1&_t=ZS-9344jpHnFEC" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/fudkey_?igsh=MTRybm15eXE3NWxlNQ%3D%3D&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <div class="footer-links">
+                <a href="/contact" class="footer-link">Contact</a>
+                <a href="/csr" class="footer-link">CSR</a>
+            </div>
+
+            <p class="copyright">FUDKEY&copy;2026</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact Fudkey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        @font-face {
+            font-family: 'Gantari';
+            src: url('/Gantari/Gantari-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Gantari';
+            src: url('/Gantari/Gantari-Italic-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #FF3700;
+            --cream: #F5EEDC;
+            --blue: #1D6ADE;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            background-color: #2c2c2c;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: 'Gantari', sans-serif;
+            letter-spacing: -0.04em;
+            padding: 10px;
+        }
+
+        .contact-page {
+            width: 390px;
+            max-width: 390px;
+            height: 843px;
+            min-height: 843px;
+            padding: 24px 18px 30px;
+            background-color: var(--cream);
+            color: var(--orange);
+            position: relative;
+        }
+
+        @media (max-width: 430px) {
+            body {
+                padding: 0;
+            }
+
+            .contact-page {
+                max-width: 100%;
+                width: 100%;
+                min-height: 100vh;
+                min-height: 100dvh;
+            }
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .contact-flag {
+            width: 78px;
+            height: auto;
+        }
+
+        .contact-title {
+            margin-top: 6px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .contact-heading {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.05;
+        }
+
+        .contact-tag {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 4px;
+        }
+
+        .contact-divider {
+            height: 6px;
+            background-color: var(--orange);
+            margin: 10px -18px 0;
+        }
+
+        .contact-divider.thin {
+            height: 3px;
+            background-color: var(--blue);
+            margin: 0 -18px 12px;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 6px;
+            color: var(--blue);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--blue);
+        }
+
+        .contact-value {
+            font-size: 24px;
+            font-weight: 800;
+            font-style: italic;
+            color: var(--blue);
+        }
+
+        .contact-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .footer-links {
+            margin: 42px 6px 16px;
+            text-align: left;
+        }
+
+        .footer-link {
+            display: block;
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 7px 0;
+            border-bottom: 2px solid var(--blue);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--blue);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.02em;
+            margin-top: 24px;
+        }
+
+        @keyframes float-in {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes grow-in {
+            from {
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+            to {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+        }
+
+        .contact-header {
+            animation: float-in 0.6s ease-out both;
+        }
+
+        .contact-title {
+            animation: float-in 0.6s ease-out both;
+            animation-delay: 0.05s;
+        }
+
+        .contact-divider {
+            animation: grow-in 0.7s ease-out both;
+            animation-delay: 0.1s;
+        }
+
+        .contact-divider.thin {
+            animation-delay: 0.15s;
+        }
+
+        .contact-list {
+            animation: float-in 0.7s ease-out both;
+            animation-delay: 0.2s;
+        }
+
+        .contact-item {
+            animation: float-in 0.6s ease-out both;
+        }
+
+        .contact-item:nth-child(1) { animation-delay: 0.22s; }
+        .contact-item:nth-child(2) { animation-delay: 0.28s; }
+        .contact-item:nth-child(3) { animation-delay: 0.34s; }
+        .contact-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .footer-links {
+            animation: float-in 0.7s ease-out both;
+            animation-delay: 0.48s;
+        }
+
+        .copyright {
+            animation: float-in 0.7s ease-out both;
+            animation-delay: 0.52s;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-page">
+        <header class="contact-header">
+            <a href="/home" aria-label="Ke Home">
+                <img class="contact-flag" src="/images/sticker-flag.png" alt="Fudkey Club">
+            </a>
+        </header>
+
+        <div class="contact-title">
+            <div class="contact-heading">Lebih Dekat<br>Dengan Kami</div>
+            <div class="contact-tag">Contact</div>
+        </div>
+
+        <div class="contact-divider"></div>
+        <div class="contact-divider thin"></div>
+
+        <section class="contact-list">
+            <div class="contact-item">
+                <div class="contact-value">fudkeysrac@gmail.com</div>
+                <div class="contact-label">Email</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-value">+62 877-6445-5226</div>
+                <div class="contact-label">Whatsapp</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-value">fudkey_</div>
+                <div class="contact-label">Instagram</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-value">sarapan.fudkey</div>
+                <div class="contact-label">Tiktok</div>
+            </div>
+        </section>
+
+        <div class="footer-links">
+            <a href="/about" class="footer-link">About Us</a>
+            <a href="/csr" class="footer-link">CSR</a>
+        </div>
+
+        <p class="copyright">FUDKEY&copy;2026</p>
+    </div>
+</body>
+</html>
