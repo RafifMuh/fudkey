@@ -244,12 +244,16 @@
             right: 15px;
             width: 18px;
             height: 18px;
-            background-image: url('/images/vector.png');
+            background-image: url('/images/Vector.png');
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
             opacity: 0.9;
             pointer-events: none;
+        }
+
+        .big-card.no-arrow::after {
+            display: none;
         }
 
         .big-card.kritik {
@@ -404,22 +408,19 @@
         </h1>
 
         <!-- Slider Card -->
-        <div class="slider-card" id="promo-slider">
+        <div class="slider-card" id="promo-slider" style="background: transparent; min-height: auto;">
             <div class="slider-wrapper">
-                <div class="slide">
-                    <h3 class="slide-title">Promo Spesial!</h3>
-                    <p class="slide-desc">Diskon 20% untuk pembelian pertama</p>
+                <div class="slide" style="padding: 0;">
+                    <img src="/images/PROMO%20POSTER%201.png" alt="Promo 1" style="width: 100%; border-radius: 22px; display: block;">
                 </div>
-                <div class="slide">
-                    <h3 class="slide-title">Buy 2 Get 1</h3>
-                    <p class="slide-desc">Setiap hari Jumat</p>
+                <div class="slide" style="padding: 0;">
+                    <img src="/images/PROMO%20POSTER%202.png" alt="Promo 2" style="width: 100%; border-radius: 22px; display: block;">
                 </div>
-                <div class="slide">
-                    <h3 class="slide-title">Cashback 15%</h3>
-                    <p class="slide-desc">Pakai QRIS dapat cashback!</p>
+                <div class="slide" style="padding: 0;">
+                    <img src="/images/PROMO%20POSTER%203.png" alt="Promo 3" style="width: 100%; border-radius: 22px; display: block;">
                 </div>
             </div>
-            <div class="slider-dots">
+            <div class="slider-dots" style="padding-bottom: 10px;">
                 <button class="dot active" data-index="0"></button>
                 <button class="dot" data-index="1"></button>
                 <button class="dot" data-index="2"></button>
@@ -429,41 +430,26 @@
         <!-- Menu Columns -->
         <div class="menu-columns">
             <div class="menu-column">
-                <a href="https://form.typeform.com/to/QiDbnHgh" class="big-card kritik">
-                    <div class="big-card-header">
-                        <span class="big-card-text">Kami Mendengar<br>Teman Fudkey</span>
-                    </div>
-                    <h2 class="text-kritik">KRITIK &<br>SARAN</h2>
+                <a href="https://form.typeform.com/to/QiDbnHgh" class="big-card kritik no-arrow" style="padding: 0; background: transparent; height: auto; min-height: auto;">
+                    <img src="/images/KRITIK%20%26%20SARAN.png" alt="Kritik & Saran" style="width: 100%; border-radius: 18px; display: block;">
                 </a>
-                <a href="/rsvp" class="big-card rsvp">
-                    <div class="big-card-header">
-                        <span class="big-card-text">Memesan Lebih<br>Awal jika Kalian Mau</span>
-                    </div>
-                    <h2 class="text-rsvp">RSVP</h2>
+                <a href="/rsvp" class="big-card rsvp no-arrow" style="padding: 0; background: transparent; height: auto; min-height: auto;">
+                    <img src="/images/RSVP.png" alt="RSVP" style="width: 100%; border-radius: 18px; display: block;">
                 </a>
             </div>
             <div class="menu-column">
-                <a href="/menu" class="big-card menu">
-                    <div class="big-card-header">
-                        <span class="big-card-text">Sajian Terbaik<br>untuk Teman Fudkey</span>
-                    </div>
-                    <h2 class="text-menu">MENU</h2>
+                <a href="/menu" class="big-card menu no-arrow" style="padding: 0; background: transparent; height: auto; min-height: auto;">
+                    <img src="/images/MENU.png" alt="MENU" style="width: 100%; border-radius: 18px; display: block;">
                 </a>
-                <a href="https://maps.app.goo.gl/CwRibxeYZvddCDkv8" class="big-card lokasi" target="_blank" rel="noopener">
-                    <div class="big-card-header">
-                        <span class="big-card-text">Bertamulah Kapan Saja<br>ke Tempat Kami</span>
-                    </div>
-                    <h2 class="text-lokasi">LOKASI</h2>
+                <a href="https://maps.app.goo.gl/CwRibxeYZvddCDkv8" class="big-card lokasi no-arrow" target="_blank" rel="noopener" style="padding: 0; background: transparent; height: auto; min-height: auto;">
+                    <img src="/images/LOKASI.png" alt="LOKASI" style="width: 100%; border-radius: 18px; display: block;">
                 </a>
             </div>
         </div>
 
         <!-- Playlist -->
-        <a href="https://open.spotify.com/playlist/1tvPNjL0ak0mjPxI6OQAf8?si=fa12b4c7fd474abc" class="big-card full">
-            <div class="big-card-header">
-                <span class="big-card-text">Bergabung dengan Kami jika<br>Selera Musik Kita Sama</span>
-            </div>
-            <h2 class="text-playlist">PLAYLIST FDKY</h2>
+        <a href="https://open.spotify.com/playlist/1tvPNjL0ak0mjPxI6OQAf8?si=fa12b4c7fd474abc" class="big-card full no-arrow" style="padding: 0; background: transparent; height: auto; min-height: auto;">
+            <img src="/images/PLAYLIST.png" alt="Playlist" style="width: 100%; border-radius: 18px; display: block;">
         </a>
 
         <div class="social-icons">
@@ -492,15 +478,11 @@
                 this.startX = 0;
                 this.currentX = 0;
                 this.isDragging = false;
-                this.slideWidth = 0;
                 
                 this.init();
             }
 
             init() {
-                this.updateSlideWidth();
-                window.addEventListener('resize', () => this.updateSlideWidth());
-
                 // Touch events
                 this.wrapper.addEventListener('touchstart', (e) => this.handleDragStart(e), { passive: true });
                 this.wrapper.addEventListener('touchmove', (e) => this.handleDragMove(e), { passive: false });
@@ -521,10 +503,6 @@
                 this.startAutoSlide();
             }
 
-            updateSlideWidth() {
-                this.slideWidth = this.container.offsetWidth;
-            }
-
             handleDragStart(e) {
                 this.isDragging = true;
                 this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
@@ -538,7 +516,8 @@
                 const currentPosition = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
                 this.currentX = currentPosition - this.startX;
                 
-                const offset = -this.currentIndex * this.slideWidth + this.currentX;
+                const slideWidth = this.container.offsetWidth;
+                const offset = -this.currentIndex * slideWidth + this.currentX;
                 this.wrapper.style.transform = `translateX(${offset}px)`;
 
                 if (e.type === 'touchmove' && Math.abs(this.currentX) > 10) {
@@ -551,7 +530,8 @@
                 this.isDragging = false;
                 this.wrapper.classList.remove('dragging');
 
-                const threshold = this.slideWidth * 0.2;
+                const slideWidth = this.container.offsetWidth;
+                const threshold = slideWidth * 0.2;
                 
                 if (this.currentX > threshold && this.currentIndex > 0) {
                     this.currentIndex--;
@@ -572,8 +552,8 @@
             }
 
             updateSliderPosition() {
-                const offset = -this.currentIndex * this.slideWidth;
-                this.wrapper.style.transform = `translateX(${offset}px)`;
+                const offset = -this.currentIndex * 100;
+                this.wrapper.style.transform = `translateX(${offset}%)`;
                 
                 this.dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === this.currentIndex);
@@ -581,14 +561,17 @@
             }
 
             startAutoSlide() {
+                this.stopAutoSlide(); // Ensure no duplicates
                 this.autoSlideInterval = setInterval(() => {
                     this.currentIndex = (this.currentIndex + 1) % this.slides.length;
                     this.updateSliderPosition();
-                }, 4000);
+                }, 3000); // Changed to 3 seconds for better visibility
             }
 
             stopAutoSlide() {
-                clearInterval(this.autoSlideInterval);
+                if (this.autoSlideInterval) {
+                    clearInterval(this.autoSlideInterval);
+                }
             }
         }
 
